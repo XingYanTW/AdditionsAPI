@@ -236,8 +236,8 @@ public class CustomTool extends CustomItem {
 					amount = NumberUtils.round(amount, 2);
 
 					if (type.equals(AttributeType.GENERIC_ATTACK_DAMAGE) && enchants != null && !enchants.isEmpty()
-							&& enchants.containsKey(Enchantment.DAMAGE_ALL)) {
-						final int level = enchants.get(Enchantment.DAMAGE_ALL);
+							&& enchants.containsKey(Enchantment.SHARPNESS)) {
+						final int level = enchants.get(Enchantment.SHARPNESS);
 						if (level == 1) {
 							amount += 1;
 						} else if (level > 1) {

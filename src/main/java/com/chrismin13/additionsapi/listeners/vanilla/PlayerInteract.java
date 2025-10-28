@@ -62,7 +62,7 @@ public class PlayerInteract implements Listener {
 	}
 
 	public static boolean shouldPlaySound(Material material, ItemStack item, byte data, Player player) {
-		if ((material == Material.GRASS || (material == Material.DIRT && data != (byte) 2))) {
+		if ((material == Material.SHORT_GRASS || (material == Material.DIRT && data != (byte) 2))) {
 			if (!AdditionsAPI.isCustomItem(item))
 				return true;
 			CustomItemStack cStack = new CustomItemStack(item);

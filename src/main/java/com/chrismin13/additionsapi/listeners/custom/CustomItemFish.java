@@ -34,7 +34,7 @@ public class CustomItemFish implements Listener {
 
 			switch (state) {
 			case CAUGHT_ENTITY:
-				if (event.getCaught().getType() == EntityType.DROPPED_ITEM) {
+				if (event.getCaught().getType() == EntityType.ITEM) {
 					damageEvent.setDamage(mechanics.getItemReel());
 				} else {
 					damageEvent.setDamage(mechanics.getEntityReel());

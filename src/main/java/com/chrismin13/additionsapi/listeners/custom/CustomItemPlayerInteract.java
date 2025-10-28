@@ -123,14 +123,14 @@ public class CustomItemPlayerInteract implements Listener {
 			if (materialUp == Material.AIR && (face == BlockFace.UP || face == BlockFace.EAST || face == BlockFace.NORTH
 					|| face == BlockFace.SOUTH || face == BlockFace.WEST)) {
 
-				if (mechanics instanceof SpadeDurability && material == Material.GRASS) {
+				if (mechanics instanceof SpadeDurability && material == Material.SHORT_GRASS) {
 
 					if (perm instanceof SpadePermissions && PermissionUtils.allowedAction(player, perm.getType(),
 							((SpadePermissions) perm).getTile()))
 						damageEvent.setDamage(((SpadeDurability) mechanics).getPathTile());
 					else
 						event.setCancelled(true);
-				} else if ((material == Material.GRASS || material == Material.GRASS_PATH
+				} else if ((material == Material.SHORT_GRASS || material == Material.DIRT_PATH
 						|| (material == Material.DIRT && data != (byte) 2))) {
 
 					if (ToolType.getToolType(cItem.getMaterial()) == ToolType.HOE

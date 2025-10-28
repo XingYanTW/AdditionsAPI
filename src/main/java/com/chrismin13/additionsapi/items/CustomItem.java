@@ -688,7 +688,7 @@ public class CustomItem implements Cloneable, Comparable<CustomItem> {
 	 *         CustomItem includes the ItemFlag HIDE_POTION_EFFECTS
 	 */
 	public boolean getPotionEffectsVisibility() {
-		return !itemFlags.contains(ItemFlag.HIDE_POTION_EFFECTS);
+		return !itemFlags.contains(ItemFlag.HIDE_POTION_CONTENTS);
 	}
 
 	/**
@@ -699,9 +699,9 @@ public class CustomItem implements Cloneable, Comparable<CustomItem> {
 	 */
 	public CustomItem setPotionEffectsVisibility(boolean potionEffectVisibility) {
 		if (!potionEffectVisibility)
-			itemFlags.add(ItemFlag.HIDE_POTION_EFFECTS);
+			itemFlags.add(ItemFlag.HIDE_POTION_CONTENTS);
 		else
-			itemFlags.remove(ItemFlag.HIDE_POTION_EFFECTS);
+			itemFlags.remove(ItemFlag.HIDE_POTION_CONTENTS);
 		return this;
 	}
 

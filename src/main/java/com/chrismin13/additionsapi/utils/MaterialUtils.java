@@ -536,7 +536,7 @@ public class MaterialUtils {
 			case GOLDEN_SWORD:
 			case GOLD_INGOT:
 			case GOLD_NUGGET:
-			case GRASS:
+            case SHORT_GRASS:
 			case GRAY_DYE:
 			case GREEN_DYE:
 			case GUARDIAN_SPAWN_EGG:
@@ -692,7 +692,7 @@ public class MaterialUtils {
 			case SALMON:
 			case SALMON_BUCKET:
 			case SALMON_SPAWN_EGG:
-			case SCUTE:
+            case TURTLE_SCUTE:
 			case SEAGRASS:
 			case SEA_PICKLE:
 			case SHEARS:
@@ -765,7 +765,7 @@ public class MaterialUtils {
 			case WRITTEN_BOOK:
 			case YELLOW_DYE:
 			case ZOMBIE_HORSE_SPAWN_EGG:
-			case ZOMBIE_PIGMAN_SPAWN_EGG:
+            case ZOMBIFIED_PIGLIN_SPAWN_EGG:
 			case ZOMBIE_SPAWN_EGG:
 			case ZOMBIE_VILLAGER_SPAWN_EGG:
 				return 0.0F;
@@ -921,7 +921,7 @@ public class MaterialUtils {
 			case SPONGE:
 			case WET_SPONGE:
 				return 0.6F;
-			case GRASS_PATH:
+            case DIRT_PATH:
 				return 0.65F;
 			case ACTIVATOR_RAIL:
 			case DETECTOR_RAIL:
@@ -1935,7 +1935,7 @@ public class MaterialUtils {
 			case GOLDEN_SWORD:
 			case GOLD_INGOT:
 			case GOLD_NUGGET:
-			case GRASS:
+            case SHORT_GRASS:
 			case GRAY_DYE:
 			case GREEN_DYE:
 			case GUARDIAN_SPAWN_EGG:
@@ -2087,7 +2087,7 @@ public class MaterialUtils {
 			case SALMON:
 			case SALMON_BUCKET:
 			case SALMON_SPAWN_EGG:
-			case SCUTE:
+            case TURTLE_SCUTE:
 			case SEAGRASS:
 			case SEA_PICKLE:
 			case SHEARS:
@@ -2160,7 +2160,7 @@ public class MaterialUtils {
 			case WRITTEN_BOOK:
 			case YELLOW_DYE:
 			case ZOMBIE_HORSE_SPAWN_EGG:
-			case ZOMBIE_PIGMAN_SPAWN_EGG:
+                case ZOMBIFIED_PIGLIN_SPAWN_EGG:
 			case ZOMBIE_SPAWN_EGG:
 			case ZOMBIE_VILLAGER_SPAWN_EGG:
 				return 0.0F;
@@ -2314,7 +2314,7 @@ public class MaterialUtils {
 			case SPONGE:
 			case WET_SPONGE:
 				return 0.6F;
-			case GRASS_PATH:
+                case DIRT_PATH:
 				return 0.65F;
 			case ACTIVATOR_RAIL:
 			case DETECTOR_RAIL:

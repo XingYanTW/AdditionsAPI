@@ -46,11 +46,11 @@ public class PlayerCustomItemDamage implements Listener {
 			durability = item.getType().getMaxDurability() - item.getDurability();
 		// TODO: Check if you can modify the durability for items that are not
 		// unbreakable and with Fake Durability.
-		if (!item.containsEnchantment(Enchantment.DURABILITY)) {
+		if (!item.containsEnchantment(Enchantment.UNBREAKING)) {
 			durability -= event.getDamage();
 		} else {
 			for (int i = 1; i <= event.getDamage(); i++) {
-				if (NumberUtils.calculateChance(1 / ((double) item.getEnchantmentLevel(Enchantment.DURABILITY) + 1D))) {
+				if (NumberUtils.calculateChance(1 / ((double) item.getEnchantmentLevel(Enchantment.UNBREAKING) + 1D))) {
 					durability -= 1;
 				}
 			}
