@@ -337,7 +337,7 @@ public class NbtFactory {
                 COMPOUND_CLASS = getMethod(0, Modifier.STATIC, offlinePlayer, "getData").getReturnType();
                 for (Class<?> clazz : COMPOUND_CLASS.getInterfaces())
                 	BASE_CLASS = clazz;
-                NBT_GET_TYPE = getMethod(0, Modifier.STATIC, BASE_CLASS, "getTypeId");
+                NBT_GET_TYPE = findTypeIdMethod(BASE_CLASS);
                 NBT_CREATE_TAG = getMethod(Modifier.STATIC, 0, BASE_CLASS, "createTag", byte.class);
                 
                 // Prepare CraftItemStack
@@ -740,6 +740,32 @@ public class NbtFactory {
             return getMethod(requireMod, bannedMod, clazz.getSuperclass(), methodName, params);
         throw new IllegalStateException(String.format(
             "Unable to find method %s (%s).", methodName, Arrays.asList(params)));
+    }
+
+    // 在类中新增辅助方法（建议放在 getMethod(...) 方法之后或合适的位置）
+    private static Method findTypeIdMethod(Class<?> clazz) {
+        if (clazz == null) {
+            throw new IllegalStateException("Unable to find method getTypeId ([]).");
+        }
+
+        for (Method method : clazz.getDeclaredMethods()) {
+            // 无参方法
+            if (method.getParameterCount() != 0) continue;
+
+            Class<?> rt = method.getReturnType();
+            // 返回类型为 byte/Byte/int/Integer
+            if (rt == byte.class || rt == Byte.class || rt == int.class || rt == Integer.class) {
+                String name = method.getName().toLowerCase();
+                // 常见名称判断，兼容不同 NMS 版本
+                if (name.contains("type") || name.equals("a") || name.equals("gettypeid") || name.equals("gettype")) {
+                    method.setAccessible(true);
+                    return method;
+                }
+            }
+        }
+
+        // 递归向上查找
+        return findTypeIdMethod(clazz.getSuperclass());
     }
     
     /**

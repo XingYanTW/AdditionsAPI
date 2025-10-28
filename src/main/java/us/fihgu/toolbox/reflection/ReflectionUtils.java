@@ -11,30 +11,46 @@ public class ReflectionUtils {
 	/**
 	 * gets the current version of minecraft.
 	 */
-	public static String getMinecraftVersion() {
-		return Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
-	}
+    public static String getMinecraftVersion() {
+        String version = Bukkit.getVersion();  // For Paper and Spigot servers
+        // Extract version number (e.g., "1.21.6")
+        if (version.contains("MC:")) {
+            return version.split("MC:")[1].split(" ")[0].trim();
+        } else {
+            Bukkit.getLogger().warning("Unable to determine Minecraft version from getVersion: " + version);
+            return "unknown"; // Fallback value
+        }
+    }
 
-	public static Class<?> getClass(String className) {
-		try {
-			Class<?> result = Class.forName(className);
-			return result;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+    public static Class<?> getClass(String className) {
+        try {
+            return Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
-		return null;
-	}
+    public static Class<?> getNMSClass(String className) {
+        String version = getMinecraftVersion();
+        if ("unknown".equals(version)) {
+            Bukkit.getLogger().warning("Unable to find NMS class because Minecraft version is unknown.");
+            return null;
+        }
+        return getClass(NMSPath + version + "." + className);
+    }
 
-	public static Class<?> getNMSClass(String className) {
-		return getClass(NMSPath + getMinecraftVersion() + "." + className);
-	}
+    public static Class<?> getCraftBukkitClass(String className) {
+        String version = getMinecraftVersion();
+        if ("unknown".equals(version)) {
+            Bukkit.getLogger().warning("Unable to find CraftBukkit class because Minecraft version is unknown.");
+            return null;
+        }
+        return getClass(craftbukkitPath + version + "." + className);
+    }
 
-	public static Class<?> getCraftBukkitClass(String className) {
-		return getClass(craftbukkitPath + getMinecraftVersion() + "." + className);
-	}
 
-	public static Field findUnderlyingField(Class<?> clazz, String fieldName) {
+    public static Field findUnderlyingField(Class<?> clazz, String fieldName) {
 		Class<?> current = clazz;
 		do {
 			try {
